@@ -1,6 +1,6 @@
 # ivy-scaffold
 
-This project provides a scaffold to add third-party libraries to an ivy repository on the local filesystem.
+Add libraries to an ivy repository on the local filesystem.
 
 ## requirements
 
