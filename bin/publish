@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Usage: 
+#   Define an IVY environment variable, e.g.
+#   ~/.bash_profile
+#   export IVY=/usr/share/java/ivy.jar 
+   
+TARGET=target
+VER=1.1
+
+SETTINGS="-settings .ivysettings/ivysettings.xml"
+DEPENDS="-ivy ivy.xml"
+PUBLISH="-publish local"
+PATTERN="-publishpattern $TARGET/[artifact].[ext]"
+REVISION="-revision $VER"
+STATUS="-status release"
+
+java -jar $IVY $SETTINGS $DEPENDS -overwrite $PUBLISH $PATTERN $REVISION $STATUS 

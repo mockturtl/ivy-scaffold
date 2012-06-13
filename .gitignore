@@ -1,0 +1,5 @@
+# deployment artifacts
+ivy-*.xml
+
+# build artifacts
+target/

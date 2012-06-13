@@ -1,0 +1,6 @@
+<ivy-module version="2.0">
+    <info organisation="com.gamua.starling-framework" module="starling"/>
+    <publications>
+      <artifact name="starling" ext="swc" type="swc"/>
+    </publications>
+</ivy-module>

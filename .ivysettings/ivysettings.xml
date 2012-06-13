@@ -1,0 +1,13 @@
+<ivysettings>
+  <properties environment="env"/>
+  <property name="ivy.checksums" value=""/>
+  <settings defaultResolver="local"/>
+  
+  <resolvers>
+    <filesystem name="local">
+      <ivy pattern="${env.HOME}/.ivy2/cache/[organisation]/[module]/ivy-[revision].xml" />
+      <artifact pattern="${env.HOME}/.ivy2/cache/[organisation]/[module]/[artifact]-[revision].[ext]" />
+    </filesystem>
+  </resolvers>
+
+</ivysettings>
