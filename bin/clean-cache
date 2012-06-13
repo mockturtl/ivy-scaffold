@@ -1,3 +1,3 @@
 #!/bin/sh
-ORG=com.gamua.starling-framework
+ORG=com.mycompany.myproject
 rm -r $HOME/.ivy2/cache/$ORG
