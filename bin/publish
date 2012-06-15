@@ -10,9 +10,19 @@ VER=1.1
 
 SETTINGS="-settings .ivysettings/ivysettings.xml"
 DEPENDS="-ivy ivy.xml"
-PUBLISH="-publish local"
+PUBLISH="-publish my-nexus"
 PATTERN="-publishpattern $TARGET/[artifact].[ext]"
 REVISION="-revision $VER"
 STATUS="-status release"
 
-java -jar $IVY $SETTINGS $DEPENDS -overwrite $PUBLISH $PATTERN $REVISION $STATUS 
+cat<<EOF
+
+  Reading host, username, password from argv...
+
+EOF
+
+export NEXUS_HOST=$1
+export NEXUS_USER=$2
+export NEXUS_PASSWORD=$3
+
+java -jar $IVY $SETTINGS $DEPENDS -overwrite $PUBLISH $PATTERN $REVISION $STATUS

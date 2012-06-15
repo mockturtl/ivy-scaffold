@@ -1,13 +1,30 @@
 <ivysettings>
   <properties environment="env"/>
   <property name="ivy.checksums" value=""/>
-  <settings defaultResolver="local"/>
-  
+  <property name="sonatype.flex.path" value="https://repository.sonatype.org/service/local/repositories/flex/content"/>
+  <property name="my-nexus.path" value="http://${env.NEXUS_HOST}:8081/nexus/content/repositories/thirdparty"/>
+  <property name="nexus.realm" value="Sonatype Nexus Repository Manager" override="false"/> 
+
+  <settings defaultResolver="my-chain"/>
+
+  <credentials host="${env.NEXUS_HOST}" realm="${nexus.realm}" username="${env.NEXUS_USER}" passwd="${env.NEXUS_PASSWORD}"/>
+
   <resolvers>
-    <filesystem name="local">
-      <ivy pattern="${env.HOME}/.ivy2/cache/[organisation]/[module]/ivy-[revision].xml" />
-      <artifact pattern="${env.HOME}/.ivy2/cache/[organisation]/[module]/[artifact]-[revision].[ext]" />
-    </filesystem>
+    <chain name="my-chain">
+      <filesystem name="local">
+        <ivy pattern="${env.HOME}/.ivy2/cache/[organisation]/[module]/ivy-[revision].xml" />
+        <artifact pattern="${env.HOME}/.ivy2/cache/[organisation]/[module]/[artifact]-[revision].[ext]" />
+      </filesystem>
+
+      <url name="my-nexus">
+        <ivy pattern="${my-nexus.path}/[organisation]/[module]/ivy-[revision].xml"/>
+        <artifact pattern="${my-nexus.path}/[organisation]/[module]/[revision]/[module]-[revision].[ext]"/>
+      </url>
+    
+      <url name="sonatype-flex" m2compatible="true">
+        <artifact pattern="${sonatype.flex.path}/[organisation]/[module]/[revision]/[module]-[revision].[ext]"/>
+      </url>
+    </chain>
   </resolvers>
 
 </ivysettings>
